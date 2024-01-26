@@ -8,6 +8,7 @@
 @import "partials/buttons";
 @import "partials/colors";
 @import "partials/layout";
+@import "partials/timeline";
 
 /* ==========================================================================
 Global Styles
@@ -252,7 +253,7 @@ Hero
 ========================================================================== */
 .hero {
   min-height: 750px;
-  background: url('../img/hero-min.jpg') center center;
+  background: url('../img/hero.webp') center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -410,105 +411,6 @@ Intro
   text-align: center;
 }
 
-/* ==========================================================================
-Features-stack
-========================================================================== */
-.features {
-  position: relative;
-
-  p {
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-  h3 {
-    margin: 0 0 20px 0;
-  }
-  span.icon {
-    font-size: 35px;
-    color: $accent-color;
-    font-weight: bold;
-  }
-  .feature-icon {
-    display: inline-block;
-    vertical-align: top;
-    padding: 6px 0 0 0;
-    margin-right: 20px;
-    width: 35px;
-  }
-  .feature-content {
-    display: inline-block;
-    width: 75%;
-  }
-  .intro-icon {
-    display: inline-block;
-    vertical-align: top;
-    padding: 6px 0 0 0;
-    margin-right: 20px;
-  }
-  .intro-content {
-    display: inline-block;
-    width: 80%;
-  }
-  ul.features-stack {
-    margin-top: 50px;
-  }
-  ul.features-stack li {
-    margin-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: solid 1px $keyline-color;
-  }
-  ul.features-stack li:last-child {
-    padding-bottom: 0px;
-    border-bottom: none;
-  }
-  .ipad-wrap {
-    width: 706px;
-    height: 1002px;
-    background: url("../img/ipad-device.png") no-repeat center center;
-    z-index: 1;
-  }
-  .iphone-wrap {
-    width: 304px;
-    height: 620px;
-    background: url("../img/iphone6.png") no-repeat center center;
-    position: absolute;
-    left: 530px;
-    bottom: 129px;
-    z-index: 2;
-  }
-  .device-showcase {
-    position: absolute;
-    bottom: -365px;
-    right: 61%;
-  }
-}
-.features .responsive-feature-img, .features-extra .responsive-feature-img {
-  display: none;
-}
-.devices {
-  position: relative;
-}
-
-/* ==========================================================================
-.features-extra
-========================================================================== */
-.features-extra {
-  position: relative;
-  z-index: 3;
-
-  .btn {
-    margin-top: 20px;
-  }
-  .macbook-wrap {
-    position: absolute;
-    width: 916px;
-    height: 540px;
-    background: url("../img/macbook-pro.png") no-repeat center center;
-    top: 114px;
-    z-index: 4;
-    left: 50%;
-  }
-}
 
 /* ==========================================================================
 .hero-strip
@@ -750,13 +652,13 @@ Embed video
 Google map
 ========================================================================== */
 #map-canvas {
-  height: 500px;
+  height: 0px;
   width: 100%;
 }
 #map-content-wrapper {
   position: relative;
-  margin-top: -502px;
-  margin-bottom: 150px;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 #map-content {
   margin-top: 40px;
@@ -791,10 +693,20 @@ RSVP form
   padding-bottom: 140px;
   .rsvp-form {
     .rsvp-btn {
-      padding: 15px 0;
+      padding: 15px 15px;
       border-radius: 3px;
-      width: 100%;
+      width: 40%;
       font-size: 13px;
+      position: relative;
+    }
+    .rsvp-decline-btn {
+      padding: 15px 15px;
+      border-radius: 3px;
+      width: 40%;
+      font-size: 13px;
+      position: relative;
+      background: $decline-color;
+      border-color: $decline-color;
     }
     .form-input-group {
       width: 100%;
@@ -821,7 +733,7 @@ RSVP form
         left: 30px;
         transform: translateY(-50%);
       }
-      i.fa-user, i.fa-users, i.fa-envelope, .fa-key {
+      i.fa-user, i.fa-users, i.fa-envelope, .fa-key, .fa-baby, .fa-wheat-awn-circle-exclamation, .fa-house, .fa-person-circle-plus {
         font-size: 14px;
         position: absolute;
         top: 50%;
@@ -829,6 +741,25 @@ RSVP form
         margin-left: 20px;
       }
       input {
+        padding-left: 68px;
+        width: 100%;
+        height: 100%;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        border: none;
+      }
+      select {
+        background: #ffffff;
+        padding-left: 68px;
+        width: 100%;
+        height: 100%;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        border: none;
+      }
+      option {
         padding-left: 68px;
         width: 100%;
         height: 100%;
@@ -847,6 +778,30 @@ RSVP form
         color: $form-placeholder;
       }
       input:-ms-input-placeholder {
+        color: $form-placeholder;
+      }
+      select::-webkit-input-placeholder {
+        color: $form-placeholder;
+      }
+      select:-moz-placeholder {
+        color: $form-placeholder;
+      }
+      select::-moz-placeholder {
+        color: $form-placeholder;
+      }
+      select:-ms-input-placeholder {
+        color: $form-placeholder;
+      }
+      option::-webkit-input-placeholder {
+        color: $form-placeholder;
+      }
+      option:-moz-placeholder {
+        color: $form-placeholder;
+      }
+      option::-moz-placeholder {
+        color: $form-placeholder;
+      }
+      option:-ms-input-placeholder {
         color: $form-placeholder;
       }
     }
@@ -898,4 +853,15 @@ body.modal-open {
 }
 .modal-body {
   padding:25px;
+}
+
+@media (max-width: 768px) { // Adjust the max-width according to your design needs
+  .hero {
+    min-height: 200px;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: auto 100%; // Set a specific background size for smaller screens
+    background-position: center; // Maintain the centering
+  }
 }

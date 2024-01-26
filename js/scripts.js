@@ -136,34 +136,6 @@ $(document).ready(function () {
 
     });
 
-    /********************** Social Share buttons ***********************/
-    var share_bar = document.getElementsByClassName('share-bar');
-    var po = document.createElement('script');
-    po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
-
-    for (var i = 0; i < share_bar.length; i++) {
-        var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=ramswarooppatra&amp;hashtags=ramandantara&amp;count=horizontal"' +
-            'style="width:105px; height:21px;">' +
-            '</iframe>' +
-
-            '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>' +
-
-            '<div class="g-plusone" data-size="medium"></div>';
-
-        // '<iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;url=' + encodeURIComponent(window.location) + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="width:105px; height:21px;"></iframe>';
-
-        share_bar[i].innerHTML = html;
-        share_bar[i].style.display = 'inline-block';
-    }
-
-    /********************** Embed youtube video *********************/
-    $('.player').YTPlayer();
-
 
     /********************** Toggle Map Content **********************/
     $('#btn-show-map').click(function () {
@@ -184,23 +156,23 @@ $(document).ready(function () {
         },
         data: {
             // Event title
-            title: "Ram and Antara's Wedding",
+            title: "Anett és Martin esküvője",
 
             // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
+            start: new Date('July 13, 2024 16:00'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
 
             // You can also choose to set an end time
             // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
+            end: new Date('July 14, 2024 03:00'),
 
             // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
+            address: 'Tarnóca Kúria, Soponya, 087 8 hrsz, 8123',
 
             // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
+            description: "idkkev"
         }
     });
 
@@ -210,22 +182,36 @@ $(document).ready(function () {
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
-        var data = $(this).serialize();
-
-        $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
-            $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
+        var form_data = $(this).serialize();
+        console.log(form_data);
+        $('#alert-wrapper').html(alert_markup('info', '<strong>Egy pillanat</strong> Elmentjük az megadott információkat.'));
+        var valid_md5s = ["18d3749af17a418a19869655f89d2d65","7ed7ad4f505d12e1f7d37e13ef14ad46",
+            "c511a0c8978b0e7e61e5ae8d8e35bb5e","37509d135b2769b96521130de26af806","91a0b676829f81306c6775ba292faeac",
+            "05000f54be6258c0c047f00d7fcc5e31","33d94984ad3a7256a6055d33e770e450","3ac48808bfc3630723e39fbcb168173e",
+            "0b93878fc1f06769f1dc0f0c0c87fb26","0c05dc66c650614e2ac7334c15eb71dd","e4e84978df8921f6685f5690493ef953",
+            "0aa5d63f5961790360322101258ad9af","539fe912b273e5ccfc5ffc918423b363","5b1dd0e37bb866cb444546e7cd765183",
+            "fd6750f298ebe95c5fd45135f4a8dbb5","4f5da4bfe1d3323a4904f44eee1eda54","3794f8e90fbb3e907118db2a955ce7c8",
+            "dd0de38c8a66c11070295f25270238e1","9f243c115c8a67bee8d2048b054e8d4f","e86fbf239270b199a732d6f73bbf58f1",
+            "864c8489aff5d47e4afc91b40b11cb0b","64970e47325794ba3cceeca180226132","4ea7e8ddf90e7697094d9a43f126f22c",
+            "806d309c7a67e49145feb93c995dee25","42afd72f8e3124de2fa62817b9486301","88a2538ce9a33775c23a67300f76d560",
+            "68730d4ff3d0a1118bd83923a436132d","c4b352238921a840389f8fe4ab6ab003","8c3479b6c454ff8015a338d809b99c92",
+            "cbb69d2765d138b4bf6219bdaa03f184","030bc526e2e11fea718df425acf98aaf","48b4888c248b7e37b9b348d80568175d",
+            "c6f48e30c1db2611d58e878c9e3e10c1"]
+        if (!valid_md5s.includes(MD5($('#invite_code').val()))) {
+            $('#alert-wrapper').html(alert_markup('danger', '<strong>Hibás meghívó kulcs!</strong> '));
         } else {
-            $.post('https://script.google.com/macros/s/AKfycbyo0rEknln8LedEP3bkONsfOh776IR5lFidLhJFQ6jdvRiH4dKvHZmtoIybvnxpxYr2cA/exec', data)
-                .done(function (data) {
-                    console.log(data);
-                    if (data.result === "error") {
-                        $('#alert-wrapper').html(alert_markup('danger', data.message));
+            $.post('https://script.google.com/macros/s/AKfycbwWZueiF_8kqpp-jbNVXieUq6jAMud2YuxrT50FGHEoWVJt8D6O_C7OFajhZmtH7Ojy/exec', form_data)
+                .done(function (response_data) {
+                    if (response_data.result === "error") {
+                        $('#alert-wrapper').html(alert_markup('danger', response_data.message));
                     } else {
+                        var response_json = JSON.parse(response_data.data);
                         $('#alert-wrapper').html('');
-                        $('#rsvp-modal').modal('show');
+                        if (response_json.rsvp_result.includes("accept")) {
+                            $('#rsvp-accepted').modal('show');
+                        } else {
+                            $('#rsvp-declined').modal('show');
+                        }
                     }
                 })
                 .fail(function (data) {
@@ -238,35 +224,6 @@ $(document).ready(function () {
 });
 
 /********************** Extras **********************/
-
-// Google map
-function initMap() {
-    var location = {lat: 22.5932759, lng: 88.27027720000001};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: location,
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
-}
-
-function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: la_fiesta,
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: la_fiesta,
-        map: map
-    });
-}
 
 // alert_markup
 function alert_markup(alert_type, msg) {
@@ -491,3 +448,13 @@ var MD5 = function (string) {
 
     return temp.toLowerCase();
 };
+
+document.getElementById('rsvp-yes-btn').addEventListener('click', function() {
+    document.getElementById('lodging-select').setAttribute('required', 'required');
+    document.getElementById("rsvp_result").setAttribute('value', 'accept');
+});
+
+document.getElementById('rsvp-no-btn').addEventListener('click', function() {
+    document.getElementById('lodging-select').removeAttribute('required');
+    document.getElementById("rsvp_result").setAttribute('value', 'decline');
+});
