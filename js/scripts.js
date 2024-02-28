@@ -65,57 +65,9 @@ $(document).ready(function () {
         height: 800
     });
 
-    /***************** Tooltips ******************/
-    $('[data-toggle="tooltip"]').tooltip();
-
-    /***************** Nav Transformicon ******************/
-
-    /* When user clicks the Icon */
-    $('.nav-toggle').click(function () {
-        $(this).toggleClass('active');
-        $('.header-nav').toggleClass('open');
-        event.preventDefault();
-    });
-    /* When user clicks a link */
-    $('.header-nav li a').click(function () {
-        $('.nav-toggle').toggleClass('active');
-        $('.header-nav').toggleClass('open');
-
-    });
-
     /***************** Header BG Scroll ******************/
 
-    $(function () {
-        $(window).scroll(function () {
-            var scroll = $(window).scrollTop();
 
-            if (scroll >= 20) {
-                $('section.navigation').addClass('fixed');
-                $('header').css({
-                    "border-bottom": "none",
-                    "padding": "35px 0"
-                });
-                $('header .member-actions').css({
-                    "top": "26px",
-                });
-                $('header .navicon').css({
-                    "top": "34px",
-                });
-            } else {
-                $('section.navigation').removeClass('fixed');
-                $('header').css({
-                    "border-bottom": "solid 1px rgba(255, 255, 255, 0.2)",
-                    "padding": "50px 0"
-                });
-                $('header .member-actions').css({
-                    "top": "41px",
-                });
-                $('header .navicon').css({
-                    "top": "48px",
-                });
-            }
-        });
-    });
     /***************** Smooth Scrolling ******************/
 
     $(function () {
@@ -457,4 +409,48 @@ document.getElementById('rsvp-yes-btn').addEventListener('click', function() {
 document.getElementById('rsvp-no-btn').addEventListener('click', function() {
     document.getElementById('lodging-select').removeAttribute('required');
     document.getElementById("rsvp_result").setAttribute('value', 'decline');
+});
+
+window.addEventListener('scroll', function() {
+    const navigation = document.querySelector('.navigation');
+    if (window.scrollY > 0) {
+        navigation.classList.add('fixed');
+    } else {
+        navigation.classList.remove('fixed');
+    }
+});
+
+window.addEventListener('scroll', function() {
+    const scroll = window.scrollY;
+
+    if (scroll >= 20) {
+        document.querySelector('section.navigation').classList.add('fixed');
+        document.querySelector('header').style.cssText = 'border-bottom: none; padding: 35px 0;';
+        document.querySelector('header .member-actions').style.cssText = 'top: 26px;';
+        document.querySelector('header .navicon').style.cssText = 'top: 34px;';
+    } else {
+        document.querySelector('section.navigation').classList.remove('fixed');
+        document.querySelector('header').style.cssText = 'border-bottom: solid 1px rgba(255, 255, 255, 0.2); padding: 50px 0;'
+        document.querySelector('header .member-actions').style.cssText = 'top: 41px;';
+        document.querySelector('header .navicon').style.cssText = 'top: 48px;';
+    }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+    const navigation = document.querySelector('.navigation');
+    if (window.scrollY > 0) {
+        navigation.classList.add('fixed');
+    }
+});
+
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.header-nav').classList.toggle('open');
+});
+
+document.querySelectorAll('.header-nav li a').forEach(link => {
+    link.addEventListener('click', function () {
+        document.querySelector('.nav-toggle').classList.toggle('active');
+        document.querySelector('.header-nav').classList.toggle('open');
+    });
 });

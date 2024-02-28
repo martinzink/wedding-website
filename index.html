@@ -24,38 +24,13 @@
     <link rel="manifest" href="manifest.json">
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
 
-    <script>
-        // load css files from CDN if local node_modules fail
-        function loadCssFromCDN(css) {
-            // create new link tag
-            const link = document.createElement('link');
-            if (css === 'animate.css') {
-                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
-            }
-
-            link.rel = 'stylesheet';
-
-            // add link tag to head section
-            document.getElementsByTagName('head')[0].appendChild(link);
-        }
-
-        // load js files from CDN if local node_modules fail
-        function loadJsFromCDN(js) {
-            if (js === 'waypoints.js') {
-                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
-            } else if (js === 'jquery.js') {
-                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
-            }
-        }
-    </script>
-
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jquery.fancybox.css">
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/styles.min.css">
     <link rel="stylesheet" href="css/queries.css">
-    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
@@ -64,6 +39,8 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
+
+
 <section class="hero">
     <section class="navigation">
         <header>
@@ -82,7 +59,7 @@
                     </nav>
                 </div>
                 <div class="navicon">
-                    <a class="nav-toggle" href="#"><span></span></a>
+                    <a class="nav-toggle"><span></span></a>
                 </div>
             </div>
         </header>
@@ -150,9 +127,9 @@
                         <div>
                             <div class="text-center">
                                 <br>
-                                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#menu-modal">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#menu-modal">
                                     <i class="fa fa-utensils"></i>&nbsp;&nbsp;Menü
-                                </a>
+                                </button>
                                 <br>
                                 <br>
                             </div>
@@ -180,9 +157,9 @@
                         <div>
                             <div class="text-center">
                                 <br>
-                                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#midnight-modal">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#midnight-modal">
                                     <i class="fa fa-utensils"></i>&nbsp;&nbsp;Menü
-                                </a>
+                                </button>
                                 <br>
                                 <br>
                             </div>
@@ -203,13 +180,14 @@
 
     </div>
 
-    <div id="menu-modal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="menu-modal" tabindex="-1" aria-labelledby="menu-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
-                    </button>
+                <div class="modal-header">
                     <h2>Menü</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     <h4>Leves:</h4>
                     <ul>
                         <li>Újházi tyúkhúsleves, cérnametélt, roppanós zöldségek</li>
@@ -228,16 +206,18 @@
                         <li>Friss saláta</li>
                     </ul>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <div id="midnight-modal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="midnight-modal" tabindex="-1" aria-labelledby="menu-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
-                    </button>
+                <div class="modal-header">
                     <h2>Éjféli menü</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     <ul>
                         <li>Töltött káposzta</li>
                         <li>Mini fasírt golyók</li>
@@ -330,30 +310,34 @@
 <section id="map" class="section-padding">
     <div id="map-canvas"></div>
     <div id="map-content-wrapper" class="container">
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <h3>Helyszín</h3>
-            <a href="http://tarnocakuria.hu/"><img src="img/tarnoca-logo.png" alt="Tarnóca Kúria" ></a>
-            <p>
-                Cím: külterület 087/8 (Tarnóca), Soponya<br>
-                Megközelíthetőség: M7 autópálya Polgárdi lehajtója, Polgárdiról Kisláng irányába továbbhaladva 10 km-re.
-            </p>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7476.962222100448!2d18.367895423454918!3d47.00163941689761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769e5c5dd3beedd%3A0x2b493cf1aea1e6dd!2zVGFybsOzY2EgS8O6cmlh!5e0!3m2!1sen!2shu!4v1706284359693!5m2!1sen!2shu"
-                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <h3>Helyszín</h3>
+                <a href="http://tarnocakuria.hu/"><img src="img/tarnoca-logo.png" alt="Tarnóca Kúria" ></a>
+                <p>
+                    Cím: külterület 087/8 (Tarnóca), Soponya<br>
+                    Megközelíthetőség: M7 autópálya Polgárdi lehajtója, Polgárdiról Kisláng irányába továbbhaladva 10 km-re.
+                </p>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7476.962222100448!2d18.367895423454918!3d47.00163941689761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769e5c5dd3beedd%3A0x2b493cf1aea1e6dd!2zVGFybsOzY2EgS8O6cmlh!5e0!3m2!1sen!2shu!4v1706284359693!5m2!1sen!2shu"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
     </div>
 </section>
 
 <section id="lodging" class="section-padding">
     <div id="lodging-content-wrapper" class="container">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <h3>Szállás/Hazajutás</h3>
-            <p>
-                A kúriában korlátozott mennyiségben (18 szoba) szállás is rendelkezésre áll. Ha itt szeretnél aludni kérlek jelezd mielőbb felénk.<br>
-                A közelben lakóknak igény szerint transzferbuszt tudunk szervezni.
-            </p>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h3>Szállás/Hazajutás</h3>
+                <p>
+                    A kúriában korlátozott mennyiségben (18 szoba) szállás is rendelkezésre áll. Ha itt szeretnél aludni kérlek jelezd mielőbb felénk.<br>
+                    A közelben lakóknak igény szerint transzferbuszt tudunk szervezni.
+                </p>
+            </div>
         </div>
     </div>
 </section>
@@ -476,6 +460,8 @@
     </div>
 </section>
 
+
+
 <footer>
     <div class="container">
         <div class="row">
@@ -487,8 +473,8 @@
         </div>
     </div>
 </footer>
-<script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
-<script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
+<script src="js/vendor/jquery-1.11.2.min.js"></script>
+<script src="node_modules/waypoints/lib/jquery.waypoints.min.js"></script>
 <script src="js/jquery.fancybox.pack.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/jquery.flexslider-min.js"></script>
