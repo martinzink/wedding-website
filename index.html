@@ -104,7 +104,6 @@
             <div class="col-sm-4 hidden-xs"></div>
         </div>
     </div>
-    <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
 </section>
 
 <section id="invitation" class="section-padding">
@@ -373,8 +372,6 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
-                    </button>
                     <div class="section-padding">
                         <h3>Köszönjük a visszajelzést!</h3>
                         <p>Örülünk hogy ott tudtok lenni a nagy napunkon. Ha bármi változna, jelezzétek mihamarabb.</p>
@@ -389,8 +386,6 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
-                    </button>
                     <div class="section-padding">
                         <h3>Sajnáljuk hogy nem tudtok eljönni</h3>
                         <p>Ha bármi változna, jelezzétek mihamarabb.</p>
@@ -401,7 +396,7 @@
     </div><!-- /.modal -->
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-md-center">
             <div class="col-md-6 col-md-offset-3">
                 <h3>Kérlek jelezzetek vissza</h3>
                 <p>Örülnénk ha mihamarabb visszatudnátok jelezni</p>
@@ -468,16 +463,20 @@
                     <div class="row">
                         <div id="alert-wrapper"></div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-md-center">
                         <div>
                             <input name="rsvp_result" id="rsvp_result" class="" type="hidden">
                         </div>
-                        <button class="btn-fill rsvp-btn" id="rsvp-yes-btn" value="accept">
-                            Ott leszek
-                        </button>
-                        <button class="btn-fill rsvp-decline-btn" id="rsvp-no-btn" value="decline">
-                            Nem tudok eljönni
-                        </button>
+                        <div class="col-12 col-md-6 py-1">
+                            <button class="btn-fill rsvp-btn" id="rsvp-yes-btn" value="accept">
+                                Ott leszek
+                            </button>
+                        </div>
+                        <div class="col-12 col-md-6 py-1">
+                            <button class="btn-fill rsvp-decline-btn" id="rsvp-no-btn" value="decline">
+                                Nem tudok eljönni
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

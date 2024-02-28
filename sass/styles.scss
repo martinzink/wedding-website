@@ -693,16 +693,16 @@ RSVP form
   padding-bottom: 140px;
   .rsvp-form {
     .rsvp-btn {
-      padding: 15px 15px;
+      padding: 15px 15px 15px 15px;
       border-radius: 3px;
-      width: 40%;
+      width: 100%;
       font-size: 13px;
       position: relative;
     }
     .rsvp-decline-btn {
-      padding: 15px 15px;
+      padding: 15px 15px 15px 15px;
       border-radius: 3px;
-      width: 40%;
+      width: 100%;
       font-size: 13px;
       position: relative;
       background: $decline-color;
