@@ -156,6 +156,14 @@
       &:nth-child(odd) {
 
         .timeline-content {
+            float: none;
+
+            padding: 40px 30px 10px 30px;
+
+            .timeline-date {
+              right: auto;
+              left: 0;
+            }
 
           &::after {
             content: '';
