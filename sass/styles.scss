@@ -248,6 +248,11 @@ Navigation
   transition: all 300ms ease-in-out;
 }
 
+.colorlight {
+    color: $txt-light;
+    font-size: 25px;
+}
+
 /* ==========================================================================
 Hero
 ========================================================================== */
@@ -265,6 +270,7 @@ Hero
     bottom: 100px;
     left: 50%;
   }*/
+
   .down-arrow a {
     color: $txt-light;
   }
