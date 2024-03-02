@@ -37,13 +37,20 @@ a:hover, a:focus {
   color: $accent-color-hover;
   text-decoration: none;
 }
+
+
+
 body {
   font-family: $sans-serif;
-  font-weight: $light;
+  font-weight: $normal;
   color: $txt-primary;
   -webkit-text-size-adjust: 100%;
-  //fix for iOS
+  h3 {
+    font-family: $dancing-font;
+  }
 }
+
+
 *:focus {
   outline: none !important;
 }
